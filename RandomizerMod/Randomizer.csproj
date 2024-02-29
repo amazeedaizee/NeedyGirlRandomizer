@@ -277,10 +277,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\endMsgsTexts.json" />
-    <None Include="Resources\notepadTexts.json" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\notepadTexts.txt" />
   </ItemGroup>
   <ItemGroup>

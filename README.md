@@ -64,7 +64,7 @@ Randomizes Diary/Logs from Ame... and probably some other important text. Text s
 
 Randomizes ending messages that appear in the ending dialog after getting some endings. Text shown is based on "endMsgsTexts.json" (comes with the mod per release). You can edits the contents of this file in the settings executable.
 
-**Contents of endMsgsTexts.json contains strong language.**
+**Contents of endMsgsTexts.json may contain strong language.**
 
 #### Randomize Special Borders
 

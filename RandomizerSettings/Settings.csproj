@@ -1,0 +1,103 @@
+﻿<Project Sdk="Eto.Forms/2.7.5">
+
+  <!--
+    Set the BuildPlatform property to the Eto platform you wish to build for.
+    The default is the platform you are building on.
+    Valid values: Wpf, Windows, Mac64, XamMac2, Gtk, Direct2D
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ApplicationIcon>cursor.ico</ApplicationIcon>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\10_normie.png" />
+    <None Remove="Resources\11_nympho.png" />
+    <None Remove="Resources\12_cucked.png" />
+    <None Remove="Resources\13_iloveu.png" />
+    <None Remove="Resources\14_bombergirl.png" />
+    <None Remove="Resources\15_noangels.png" />
+    <None Remove="Resources\16_flatline.png" />
+    <None Remove="Resources\17_i_overdose.png" />
+    <None Remove="Resources\18_nerdygirl.png" />
+    <None Remove="Resources\19_religion.png" />
+    <None Remove="Resources\1_doyouloveme.png" />
+    <None Remove="Resources\20_blazing.png" />
+    <None Remove="Resources\21_soclose.png" />
+    <None Remove="Resources\23_g_express.png" />
+    <None Remove="Resources\24_d_angel.png" />
+    <None Remove="Resources\25_invoked.png" />
+    <None Remove="Resources\2_1_happy.png" />
+    <None Remove="Resources\2_unhappy.png" />
+    <None Remove="Resources\3_rainbow.png" />
+    <None Remove="Resources\4_u_parody.png" />
+    <None Remove="Resources\5_catastrophe.png" />
+    <None Remove="Resources\6_labor_evil.png" />
+    <None Remove="Resources\7_needygirl.png" />
+    <None Remove="Resources\8_pain.png" />
+    <None Remove="Resources\9_f_angel.png" />
+    <None Remove="Resources\megaten.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="cursor.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\10_normie.png" />
+    <EmbeddedResource Include="Resources\11_nympho.png" />
+    <EmbeddedResource Include="Resources\12_cucked.png" />
+    <EmbeddedResource Include="Resources\13_iloveu.png" />
+    <EmbeddedResource Include="Resources\14_bombergirl.png" />
+    <EmbeddedResource Include="Resources\15_noangels.png" />
+    <EmbeddedResource Include="Resources\16_flatline.png" />
+    <EmbeddedResource Include="Resources\17_i_overdose.png" />
+    <EmbeddedResource Include="Resources\18_nerdygirl.png" />
+    <EmbeddedResource Include="Resources\19_religion.png" />
+    <EmbeddedResource Include="Resources\1_doyouloveme.png" />
+    <EmbeddedResource Include="Resources\20_blazing.png" />
+    <EmbeddedResource Include="Resources\21_soclose.png" />
+    <EmbeddedResource Include="Resources\23_g_express.png" />
+    <EmbeddedResource Include="Resources\24_d_angel.png" />
+    <EmbeddedResource Include="Resources\25_invoked.png" />
+    <EmbeddedResource Include="Resources\2_1_happy.png" />
+    <EmbeddedResource Include="Resources\2_unhappy.png" />
+    <EmbeddedResource Include="Resources\3_rainbow.png" />
+    <EmbeddedResource Include="Resources\4_u_parody.png" />
+    <EmbeddedResource Include="Resources\5_catastrophe.png" />
+    <EmbeddedResource Include="Resources\6_labor_evil.png" />
+    <EmbeddedResource Include="Resources\7_needygirl.png" />
+    <EmbeddedResource Include="Resources\8_pain.png" />
+    <EmbeddedResource Include="Resources\9_f_angel.png" />
+    <EmbeddedResource Include="Resources\megaten.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RandomizerMod\Randomizer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\HelloWorld\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

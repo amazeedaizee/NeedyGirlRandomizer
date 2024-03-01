@@ -58,13 +58,13 @@ Randomize stream text for every stream. Only affects KAngel's dialogue and set c
 
 Randomizes Diary/Logs from Ame... and probably some other important text. Text shown is based on "notepadTexts.json" (comes with the mod per release). You can edits the contents of this file in the settings executable.
 
-**Contents of notepadTexts.json may contain strong language.**
+**Contents of notepadTexts.json may contain strong language.** [You can look at what notepadTexts contains in the base mod here.](https://github.com/amazeedaizee/NeedyGirlRandomizer/blob/master/RandomizerMod/Resources/notepadTexts.txt)
 
 #### Randomize Ending Messages
 
 Randomizes ending messages that appear in the ending dialog after getting some endings. Text shown is based on "endMsgsTexts.json" (comes with the mod per release). You can edits the contents of this file in the settings executable.
 
-**Contents of endMsgsTexts.json may contain strong language.**
+**Contents of endMsgsTexts.json may contain strong language.** [You can look at what endMsgTexts contains in the base mod here.](https://github.com/amazeedaizee/NeedyGirlRandomizer/blob/master/RandomizerMod/Resources/endMsgsTexts.txt)
 
 #### Randomize Special Borders
 

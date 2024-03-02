@@ -277,10 +277,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\notepadTexts.txt" />
+    <EmbeddedResource Include="Resources\notepadTexts.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\endMsgsTexts.txt" />
+    <EmbeddedResource Include="Resources\endMsgsTexts.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

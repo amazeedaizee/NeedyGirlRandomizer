@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 
@@ -47,14 +48,14 @@ namespace RandomSettings
                         }
                         for (int i = 0; i < readData.Count && langIndex == 0; i++)
                         {
-                            if (currentLang.Contains(readData[i].Trim()))
+                            if (!string.IsNullOrWhiteSpace(readData[i]) && currentLang.Contains(readData[i].Trim()))
                             {
                                 langIndex = i;
                             }
                         }
                         if (langIndex == 0)
                         {
-                            return "";
+                            langIndex = 2;
                         }
                     }
                     else
@@ -66,7 +67,14 @@ namespace RandomSettings
                         }
                         if (readData[0] == parentId && readData[1] == type.ToString())
                         {
-                            return readData[langIndex];
+                            try
+                            {
+                                return readData[langIndex];
+                            }
+                            catch (ArgumentOutOfRangeException)
+                            {
+                                return readData[2];
+                            }
                         }
                     }
                 }

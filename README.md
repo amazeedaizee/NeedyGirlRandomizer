@@ -19,6 +19,7 @@ In addition, this mod is customizable, so rather then Ame sending a random tweet
 ## Randomizer Options
 
 **You can choose what to randomize in the game by using the Settings executable that comes with the mod. Any option that is already enabled out of the box is labelled with _(Default)_.**
+Any options that are changed only take effect when the game loads. It will not take effect if the game is still running.
 
 #### Randomize Stats (default)
 

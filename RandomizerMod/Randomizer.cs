@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using UniRx;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Randomizer
@@ -21,7 +22,7 @@ namespace Randomizer
 
         public const string pluginGuid = "needy.girl.random";
         public const string pluginName = "Randomizer";
-        public const string pluginVersion = "2.0.0.0";
+        public const string pluginVersion = "2.0.0.1";
 
         public static ManualLogSource logger;
 
@@ -31,7 +32,7 @@ namespace Randomizer
         {
             logger = Logger;
             PInfo = Info;
-
+            this.gameObject.hideFlags = HideFlags.HideAndDontSave;
             Harmony harmony = new Harmony(pluginGuid);
 
             /// Credits to zonni for their post I found on Stack Overflow regarding patching inner MoveNext's 

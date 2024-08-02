@@ -7,17 +7,31 @@
   -->
 
   <PropertyGroup>
-	  <BuildPlatform>Mac64</BuildPlatform>
-    <TargetFramework>net6.0</TargetFramework>
+
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ApplicationIcon>cursor.ico</ApplicationIcon>
     <StartupObject>RandomSettings.Program</StartupObject>
     <UseWPF>False</UseWPF>
-	  <RuntimeIdentifiers>osx-x64</RuntimeIdentifiers>
+
 	  <OutputType>WinExe</OutputType>
 	  <UseWindowsForms>False</UseWindowsForms>
-	  <Configurations>Debug;Release</Configurations>
+	  <Configurations>Debug;Release;Wpf</Configurations>
+	  <NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
   </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<BuildPlatform>Mac64</BuildPlatform>
+		<TargetFramework>net6.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Wpf'">
+		<BuildPlatform>Wpf</BuildPlatform>
+		<TargetFramework>net6.0-windows</TargetFramework>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(BuildVersion)' == 'Mac64'">
+		<RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
+	</PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\10_normie.png" />
@@ -82,7 +96,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Eto.Platform.Mac64" Version="2.7.5" />
+    <PackageReference Condition="'$(BuildVersion)' == 'Mac64'" Include="Eto.Platform.Mac64" Version="2.7.5" />
+    <PackageReference Condition="'$(BuildVersion)' == 'Wpf'" Include="Eto.Platform.Wpf" />
     <PackageReference Include="System.Drawing.Common" Version="8.0.7" />
     <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
   </ItemGroup>
@@ -117,7 +132,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Eto.Platform.Wpf" Version="2.8.3" />
+    <PackageReference Update="Eto.Platform.Wpf" Version="2.7.5" />
   </ItemGroup>
 
 </Project>

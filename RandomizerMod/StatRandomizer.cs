@@ -246,21 +246,21 @@ namespace Randomizer
             {
                 if (curFollows >= 1000000 && num <= 1)
                 {
-                    followers = random.Next(-curFollows, -100000);
+                    followers = random.Next((-curFollows + 1000), -100000);
                 }
                 else if (curFollows >= 100000 && num <= 4)
                 {
-                    tempFollowLoss = random.Next(-curFollows, -10000);
+                    tempFollowLoss = random.Next((-curFollows + 1000), -10000);
                     followers = tempFollowLoss < -1000000 ? -1000000 : tempFollowLoss;
                 }
                 else if (curFollows >= 10000 && num <= 7)
                 {
-                    tempFollowLoss = random.Next(-curFollows, -1000);
+                    tempFollowLoss = random.Next((-curFollows + 1000), -1000);
                     followers = tempFollowLoss < -100000 ? -100000 : tempFollowLoss;
                 }
                 else if (curFollows >= 1001)
                 {
-                    tempFollowLoss = random.Next(-curFollows, 0);
+                    tempFollowLoss = random.Next((-curFollows + 100), 0);
                     followers = tempFollowLoss < -10000 ? -10000 : tempFollowLoss;
                 }
                 if (followers != 0)
@@ -277,7 +277,7 @@ namespace Randomizer
             System.Random random = new System.Random();
             int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower);
             int followertweet;
-            int num = random.Next(0, 60);
+            int num = random.Next(0, 100);
             int num2 = random.Next(0, 11);
 
             if (!IsActiveOrNotDataZ())

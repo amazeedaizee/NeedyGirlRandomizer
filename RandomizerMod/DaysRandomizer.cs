@@ -76,6 +76,10 @@ namespace Randomizer
             do
             {
                 randDay = UnityEngine.Random.Range(2, 31);
+                if (randDay == 30)
+                {
+                    randDay = UnityEngine.Random.Range(0, 2) == 0 ? 30 : currentDay;
+                }
             }
             while (randDay == currentDay);
             return randDay;

@@ -2,7 +2,6 @@ using Eto.Drawing;
 using Eto.Forms;
 using System;
 using System.IO;
-using System.Reflection;
 
 namespace RandomSettings
 {
@@ -34,8 +33,8 @@ namespace RandomSettings
         internal LinkButton editNotepadLabel;
         internal LinkButton editEndMsgsLabel;
 
-        static string notepadPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "notepadTexts.json");
-        static string endMsgsPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "endMsgsTexts.json");
+        static string notepadPath = Path.Combine(SettingsEditor.currentPath, "notepadTexts.json");
+        static string endMsgsPath = Path.Combine(SettingsEditor.currentPath, "endMsgsTexts.json");
         public MainForm()
         {
             editNotepadLabel = new LinkButton();

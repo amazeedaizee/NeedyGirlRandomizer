@@ -62,7 +62,10 @@ namespace RandomSettings
                 }
                 Dispose();
             };
-            listOfTexts.SelectedIndexChanged += (object? sender, EventArgs e) => { SaveSelectedText(true, true); FillTextBoxWithSelText(); };
+            listOfTexts.SelectedIndexChanged += (object? sender, EventArgs e) =>
+            {
+                SaveSelectedText(pastSelectedIndex != listOfTexts.SelectedIndex, true); FillTextBoxWithSelText();
+            };
 
             Content = new StackLayout
             {
@@ -112,7 +115,6 @@ namespace RandomSettings
                 listOfTexts.Items.RemoveAt(pastSelectedIndex);
                 listOfTexts.Items.Insert(pastSelectedIndex, new ListItem { Text = text.Replace('\n', ' ').Replace('\r', ' ') });
                 currentTextList.textList[pastSelectedIndex] = text;
-                pastSelectedIndex = -1;
             }
             listOfTexts.Items.Add("...");
             currentTextList.textList.Add("...");
@@ -129,17 +131,14 @@ namespace RandomSettings
             listOfTexts.Items.RemoveAt(selectIndex);
             currentTextList.textList.RemoveAt(selectIndex);
             listOfTexts.SelectedIndex = -1;
+            selectedText.Text = "";
             SaveTexts();
             isDeleting = false;
         }
 
         void FillTextBoxWithSelText()
         {
-            if (listOfTexts.SelectedIndex == -1)
-            {
-                selectedText.Text = "";
-            }
-            else
+            if (listOfTexts.SelectedIndex != -1)
             {
                 selectedText.Text = currentTextList.textList[listOfTexts.SelectedIndex];
                 pastSelectedIndex = listOfTexts.SelectedIndex;
@@ -154,8 +153,9 @@ namespace RandomSettings
             {
                 if (isUpdate)
                 {
-                    listOfTexts.Items.RemoveAt(pastSelectedIndex);
+                    //listOfTexts.Items[pastSelectedIndex].Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ');
                     listOfTexts.Items.Insert(pastSelectedIndex, new ListItem { Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ') });
+                    listOfTexts.Items.RemoveAt(pastSelectedIndex + 1);
                 }
                 currentTextList.textList[pastSelectedIndex] = selectedText.Text;
             }
@@ -163,8 +163,10 @@ namespace RandomSettings
             {
                 if (isUpdate)
                 {
-                    listOfTexts.Items.RemoveAt(listOfTexts.SelectedIndex);
+                    //listOfTexts.Items[listOfTexts.SelectedIndex].Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ');
                     listOfTexts.Items.Insert(listOfTexts.SelectedIndex, new ListItem { Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ') });
+                    listOfTexts.Items.RemoveAt(listOfTexts.SelectedIndex + 1);
+
                 }
                 currentTextList.textList[listOfTexts.SelectedIndex] = selectedText.Text;
             }

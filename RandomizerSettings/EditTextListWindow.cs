@@ -52,7 +52,14 @@ namespace RandomSettings
             {
                 SaveSelectedText(false, false);
                 mainForm.Focus();
-                mainForm.notepadWindow = null;
+                if (mainForm.notepadWindow == this)
+                {
+                    mainForm.notepadWindow = null;
+                }
+                else if (mainForm.endMsgsWindow == this)
+                {
+                    mainForm.endMsgsWindow = null;
+                }
                 Dispose();
             };
             listOfTexts.SelectedIndexChanged += (object? sender, EventArgs e) => { SaveSelectedText(true, true); FillTextBoxWithSelText(); listOfTexts.Invalidate(); };

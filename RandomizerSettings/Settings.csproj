@@ -8,7 +8,7 @@
 
   <PropertyGroup>
 	  <BuildPlatform>Mac64</BuildPlatform>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ApplicationIcon>cursor.ico</ApplicationIcon>
     <StartupObject>RandomSettings.Program</StartupObject>

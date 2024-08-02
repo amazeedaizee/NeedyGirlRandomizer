@@ -62,7 +62,7 @@ namespace RandomSettings
                 }
                 Dispose();
             };
-            listOfTexts.SelectedIndexChanged += (object? sender, EventArgs e) => { SaveSelectedText(true, true); FillTextBoxWithSelText(); listOfTexts.Invalidate(); };
+            listOfTexts.SelectedIndexChanged += (object? sender, EventArgs e) => { SaveSelectedText(true, true); FillTextBoxWithSelText(); };
 
             Content = new StackLayout
             {

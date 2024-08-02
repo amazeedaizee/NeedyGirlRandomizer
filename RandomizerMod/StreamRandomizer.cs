@@ -204,7 +204,7 @@ namespace Randomizer
         [HarmonyPatch(typeof(NetachipChooser), "StartHaisin")]
         public static bool StartRandomStream(ref AlphaType alpha, ref int level)
         {
-            int rngNum = UnityEngine.Random.Range(0, 101);
+            int rngNum = UnityEngine.Random.Range(0, 201);
             int rngAlpha = UnityEngine.Random.Range(0, 12);
             int rngLevel = UnityEngine.Random.Range(1, 6);
             bool isNotDark = true;
@@ -215,17 +215,17 @@ namespace Randomizer
                 return false;
             if (SingletonMonoBehaviour<EventManager>.Instance.nowEnding != EndingType.Ending_None)
                 return false;
-            if (rngNum > 89 && SettingsReader.currentSettings.IncludeSpecialStreams && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) > 2)
+            if (rngNum > 189 && SettingsReader.currentSettings.IncludeSpecialStreams && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) > 2)
             {
                 switch (rngNum)
                 {
-                    case 90:
+                    case 190:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Meta;
                         break;
-                    case 91:
+                    case 191:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Happy;
                         break;
-                    case 92:
+                    case 192:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Ginga;
                         SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0);
                         SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(interactive: false);
@@ -233,29 +233,29 @@ namespace Randomizer
                         SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Action_HaishinDark>();
                         isNotDark = false;
                         break;
-                    case 93:
+                    case 193:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Kyouso;
                         break;
-                    case 94:
+                    case 194:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Sucide;
                         break;
-                    case 95:
+                    case 195:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Grand;
                         SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(interactive: false);
                         SingletonMonoBehaviour<TaskbarManager>.Instance.TaskBarGroup.alpha = 0f;
                         SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Action_HaishinDark>();
                         isNotDark = false;
                         break;
-                    case 96:
+                    case 196:
                         alpha = AlphaType.Angel;
                         level = 6;
                         isNormalPlaying = true;
                         break;
-                    case 97:
-                    case 98:
+                    case 197:
+                    case 198:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Ntr;
                         break;
-                    case 99:
+                    case 199:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_KowaiInternet;
                         GameObject.Find("InvertVolume").GetComponent<Volume>().enabled = true;
                         SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0);
@@ -263,7 +263,7 @@ namespace Randomizer
                         SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Action_HaishinDark>();
                         isNotDark = false;
                         break;
-                    case 100:
+                    case 200:
                         SingletonMonoBehaviour<EventManager>.Instance.nowEnding = EndingType.Ending_Ideon;
                         break;
                     default:
@@ -359,6 +359,7 @@ namespace Randomizer
             int rngHorror = UnityEngine.Random.Range(0, 60);
             if (!IsActiveOrNotDataZ())
                 return true;
+            if (!SettingsReader.currentSettings.IncludeSpecialStreams) return true;
             Initializer.logger.LogInfo($"Horror Number Generated: {rngHorror},");
             if (dayIndex < 3)
                 return true;

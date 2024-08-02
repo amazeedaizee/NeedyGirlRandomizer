@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Randomizer;
 using System.IO;
+using System.Reflection;
 
 namespace RandomSettings
 {
@@ -19,11 +20,12 @@ namespace RandomSettings
 
             RandomizerOptions readSettings;
             string settingsFile;
+            string settingsPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "settings.json");
             try
             {
-                if (File.Exists(Directory.GetCurrentDirectory() + @"\settings.json"))
+                if (File.Exists(settingsPath))
                 {
-                    settingsFile = File.ReadAllText(Directory.GetCurrentDirectory() + @"\settings.json");
+                    settingsFile = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "settings.json"));
                     readSettings = JsonConvert.DeserializeObject<RandomizerOptions>(settingsFile);
                     currentSettings = readSettings;
                 }
@@ -38,14 +40,14 @@ namespace RandomSettings
             {
                 readSettings = new RandomizerOptions();
                 settingsFile = JsonConvert.SerializeObject(readSettings, Formatting.Indented);
-                File.WriteAllText(Directory.GetCurrentDirectory() + @"\settings.json", settingsFile);
+                File.WriteAllText(settingsPath, settingsFile);
             }
         }
 
         public static void SaveSettings()
         {
             string settingsFile = JsonConvert.SerializeObject(currentSettings, Formatting.Indented);
-            File.WriteAllText(Directory.GetCurrentDirectory() + @"\settings.json", settingsFile);
+            File.WriteAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "settings.json"), settingsFile);
         }
 
         public static void SetNewSettings()

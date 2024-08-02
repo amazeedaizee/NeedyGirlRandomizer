@@ -9,7 +9,7 @@ namespace RandomSettings
 {
     public class EventTextList
     {
-        public List<string>? textList = new();
+        public List<string>? textList = new List<string>();
     }
     public partial class EditTextListWindow : Form
     {
@@ -173,7 +173,7 @@ namespace RandomSettings
                 {
                     eventTextFile = File.ReadAllText(filePath);
                     eventTexts = JsonConvert.DeserializeObject<EventTextList>(eventTextFile);
-                    currentTextList = new();
+                    currentTextList = new EventTextList();
                     currentTextList.textList.Clear();
                     for (int i = 0; i < eventTexts.textList.Count; i++)
                     {
@@ -189,8 +189,8 @@ namespace RandomSettings
 
             void CreateTexts()
             {
-                eventTexts = new();
-                eventTexts.textList = new()
+                eventTexts = new EventTextList();
+                eventTexts.textList = new List<string>()
                             {
                                 "This",
                                 "Will",

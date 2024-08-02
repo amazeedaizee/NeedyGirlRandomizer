@@ -39,11 +39,12 @@ namespace Randomizer
 
             RandomizerOptions readSettings;
             string settingsFile;
+            string path = Path.Combine(Path.GetDirectoryName(Initializer.PInfo.Location), "settings.json");
             try
             {
-                if (File.Exists(Path.GetDirectoryName(Initializer.PInfo.Location) + "\\settings.json"))
+                if (File.Exists(path))
                 {
-                    settingsFile = File.ReadAllText(Path.GetDirectoryName(Initializer.PInfo.Location) + "\\settings.json");
+                    settingsFile = File.ReadAllText(path);
                     readSettings = JsonConvert.DeserializeObject<RandomizerOptions>(settingsFile);
                     currentSettings = readSettings;
                 }
@@ -58,7 +59,7 @@ namespace Randomizer
             {
                 readSettings = new RandomizerOptions();
                 settingsFile = JsonConvert.SerializeObject(readSettings, Formatting.Indented);
-                File.WriteAllText(Path.GetDirectoryName(Initializer.PInfo.Location) + "\\settings.json", settingsFile);
+                File.WriteAllText(path, settingsFile);
             }
         }
     }

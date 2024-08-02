@@ -63,7 +63,7 @@ namespace Randomizer
             harmony.Patch(setSceneMethod, new HarmonyMethod(AccessTools.Method(typeof(StreamRandomizer), "HorrorStreamChance")));
             harmony.Patch(setSceneMethod, null, null, new HarmonyMethod(AccessTools.Method(typeof(StreamRandomizer), "SetExtraCondHorror")));
             harmony.PatchAll();
-            logger.LogInfo("Randomizer started. Please note that Steam Achievements are currently diaabled while using this mod.");
+            logger.LogInfo("Randomizer started. Please note that Steam Achievements are currently disabled while using this mod.");
 
             SettingsReader.LoadSettings();
 

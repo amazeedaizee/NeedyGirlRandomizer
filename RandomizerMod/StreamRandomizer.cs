@@ -359,7 +359,8 @@ namespace Randomizer
             int rngHorror = UnityEngine.Random.Range(0, 60);
             if (!IsActiveOrNotDataZ())
                 return true;
-            if (!SettingsReader.currentSettings.IncludeSpecialStreams) return true;
+            if (!SettingsReader.currentSettings.IncludeSpecialStreams)
+                return true;
             Initializer.logger.LogInfo($"Horror Number Generated: {rngHorror},");
             if (dayIndex < 3)
                 return true;

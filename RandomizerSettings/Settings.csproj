@@ -7,11 +7,35 @@
   -->
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ApplicationIcon>cursor.ico</ApplicationIcon>
-
+	  <StartupObject>RandomSettings.Program</StartupObject>
+	  <OutputType>WinExe</OutputType>
+	  <UseWPF>False</UseWPF>
+	  <UseWindowsForms>False</UseWindowsForms>
+	  <Configurations>Debug;Release;Wpf</Configurations>
+	  <NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+	  <BuildPlatform>Wpf</BuildPlatform>
+	  <TargetFramework>net6.0-windows</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+	  <BuildPlatform>Mac64</BuildPlatform>
+	  <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Wpf'">
+		<BuildPlatform>Wpf</BuildPlatform>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(BuildVersion)' == 'Mac64'">
+		<RuntimeIdentifiers>osx-x64;osx-arm64</RuntimeIdentifiers>
+	</PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\10_normie.png" />
@@ -76,6 +100,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Condition="'$(BuildVersion)' == 'Mac64'" Include="Eto.Platform.Mac64" Version="2.7.5" />
+    <PackageReference Condition="'$(BuildVersion)' == 'Wpf'" Include="Eto.Platform.Wpf" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.7" />
+    <PackageReference Include="System.Resources.Extensions" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RandomizerMod\Randomizer.csproj" />
   </ItemGroup>
 
@@ -98,6 +129,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Eto.Forms" Version="2.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Eto.Platform.Wpf" Version="2.7.5" />
   </ItemGroup>
 
 </Project>

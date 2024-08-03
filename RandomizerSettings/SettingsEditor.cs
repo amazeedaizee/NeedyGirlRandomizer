@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Randomizer;
+using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace RandomSettings
 {
@@ -9,6 +11,7 @@ namespace RandomSettings
     {
         public static MainForm MainForm;
         public static RandomizerOptions currentSettings = new RandomizerOptions();
+        public static string currentPath = string.Empty;
 
         public static void SetMainForm(MainForm form)
         {
@@ -19,11 +22,12 @@ namespace RandomSettings
 
             RandomizerOptions readSettings;
             string settingsFile;
+            string settingsPath = Path.Combine(currentPath, "settings.json");
             try
             {
-                if (File.Exists(Directory.GetCurrentDirectory() + @"\settings.json"))
+                if (File.Exists(settingsPath))
                 {
-                    settingsFile = File.ReadAllText(Directory.GetCurrentDirectory() + @"\settings.json");
+                    settingsFile = File.ReadAllText(Path.Combine(currentPath, "settings.json"));
                     readSettings = JsonConvert.DeserializeObject<RandomizerOptions>(settingsFile);
                     currentSettings = readSettings;
                 }
@@ -38,14 +42,14 @@ namespace RandomSettings
             {
                 readSettings = new RandomizerOptions();
                 settingsFile = JsonConvert.SerializeObject(readSettings, Formatting.Indented);
-                File.WriteAllText(Directory.GetCurrentDirectory() + @"\settings.json", settingsFile);
+                File.WriteAllText(settingsPath, settingsFile);
             }
         }
 
         public static void SaveSettings()
         {
             string settingsFile = JsonConvert.SerializeObject(currentSettings, Formatting.Indented);
-            File.WriteAllText(Directory.GetCurrentDirectory() + @"\settings.json", settingsFile);
+            File.WriteAllText(Path.Combine(currentPath, "settings.json"), settingsFile);
         }
 
         public static void SetNewSettings()
@@ -69,6 +73,17 @@ namespace RandomSettings
             currentSettings.IncludeSpecialStreams = MainForm.spePanel.checkBox.Checked != true ? false : true;
             currentSettings.RandomizeAnimations = MainForm.animPanel.checkBox.Checked != true ? false : true;
             currentSettings.IncludeAmeAndKAngel = MainForm.kAmePanel.checkBox.Checked != true ? false : true;
+
+        }
+
+        internal static void SetAppDirectory()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                currentPath = Path.Combine(Path.GetDirectoryName(Directory.GetParent(Directory.GetParent(Directory.GetParent(AppContext.BaseDirectory).FullName).FullName).FullName));
+                return;
+            }
+            currentPath = Path.GetDirectoryName(Directory.GetCurrentDirectory());
 
         }
     }

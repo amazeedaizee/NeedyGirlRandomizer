@@ -9,7 +9,7 @@ namespace RandomSettings
 {
     public class EventTextList
     {
-        public List<string>? textList = new();
+        public List<string>? textList = new List<string>();
     }
     public partial class EditTextListWindow : Form
     {
@@ -52,10 +52,20 @@ namespace RandomSettings
             {
                 SaveSelectedText(false, false);
                 mainForm.Focus();
-                mainForm.notepadWindow = null;
+                if (mainForm.notepadWindow == this)
+                {
+                    mainForm.notepadWindow = null;
+                }
+                else if (mainForm.endMsgsWindow == this)
+                {
+                    mainForm.endMsgsWindow = null;
+                }
                 Dispose();
             };
-            listOfTexts.SelectedIndexChanged += (object? sender, EventArgs e) => { SaveSelectedText(true, true); FillTextBoxWithSelText(); listOfTexts.Invalidate(); };
+            listOfTexts.SelectedIndexChanged += (object? sender, EventArgs e) =>
+            {
+                SaveSelectedText(pastSelectedIndex != listOfTexts.SelectedIndex, true); FillTextBoxWithSelText();
+            };
 
             Content = new StackLayout
             {
@@ -99,16 +109,18 @@ namespace RandomSettings
 
         void AddNewTextItem(object? sender, EventArgs e)
         {
+
             var text = selectedText.Text;
             if (pastSelectedIndex != -1)
             {
                 listOfTexts.Items.RemoveAt(pastSelectedIndex);
                 listOfTexts.Items.Insert(pastSelectedIndex, new ListItem { Text = text.Replace('\n', ' ').Replace('\r', ' ') });
                 currentTextList.textList[pastSelectedIndex] = text;
-                pastSelectedIndex = -1;
             }
             listOfTexts.Items.Add("...");
             currentTextList.textList.Add("...");
+            listOfTexts.SelectedIndex = -1;
+            selectedText.Text = "";
             SaveTexts();
         }
 
@@ -122,17 +134,14 @@ namespace RandomSettings
             listOfTexts.Items.RemoveAt(selectIndex);
             currentTextList.textList.RemoveAt(selectIndex);
             listOfTexts.SelectedIndex = -1;
+            selectedText.Text = "";
             SaveTexts();
             isDeleting = false;
         }
 
         void FillTextBoxWithSelText()
         {
-            if (listOfTexts.SelectedIndex == -1)
-            {
-                selectedText.Text = "";
-            }
-            else
+            if (listOfTexts.SelectedIndex != -1)
             {
                 selectedText.Text = currentTextList.textList[listOfTexts.SelectedIndex];
                 pastSelectedIndex = listOfTexts.SelectedIndex;
@@ -147,8 +156,9 @@ namespace RandomSettings
             {
                 if (isUpdate)
                 {
-                    listOfTexts.Items.RemoveAt(pastSelectedIndex);
+                    //listOfTexts.Items[pastSelectedIndex].Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ');
                     listOfTexts.Items.Insert(pastSelectedIndex, new ListItem { Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ') });
+                    listOfTexts.Items.RemoveAt(pastSelectedIndex + 1);
                 }
                 currentTextList.textList[pastSelectedIndex] = selectedText.Text;
             }
@@ -156,8 +166,10 @@ namespace RandomSettings
             {
                 if (isUpdate)
                 {
-                    listOfTexts.Items.RemoveAt(listOfTexts.SelectedIndex);
+                    //listOfTexts.Items[listOfTexts.SelectedIndex].Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ');
                     listOfTexts.Items.Insert(listOfTexts.SelectedIndex, new ListItem { Text = selectedText.Text.Replace('\n', ' ').Replace('\r', ' ') });
+                    listOfTexts.Items.RemoveAt(listOfTexts.SelectedIndex + 1);
+
                 }
                 currentTextList.textList[listOfTexts.SelectedIndex] = selectedText.Text;
             }
@@ -173,7 +185,7 @@ namespace RandomSettings
                 {
                     eventTextFile = File.ReadAllText(filePath);
                     eventTexts = JsonConvert.DeserializeObject<EventTextList>(eventTextFile);
-                    currentTextList = new();
+                    currentTextList = new EventTextList();
                     currentTextList.textList.Clear();
                     for (int i = 0; i < eventTexts.textList.Count; i++)
                     {
@@ -189,8 +201,8 @@ namespace RandomSettings
 
             void CreateTexts()
             {
-                eventTexts = new();
-                eventTexts.textList = new()
+                eventTexts = new EventTextList();
+                eventTexts.textList = new List<string>()
                             {
                                 "This",
                                 "Will",

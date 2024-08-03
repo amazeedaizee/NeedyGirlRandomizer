@@ -33,8 +33,8 @@ namespace RandomSettings
         internal LinkButton editNotepadLabel;
         internal LinkButton editEndMsgsLabel;
 
-        static string notepadPath = Directory.GetCurrentDirectory() + @"\notepadTexts.json";
-        static string endMsgsPath = Directory.GetCurrentDirectory() + @"\endMsgsTexts.json";
+        static string notepadPath = Path.Combine(SettingsEditor.currentPath, "notepadTexts.json");
+        static string endMsgsPath = Path.Combine(SettingsEditor.currentPath, "endMsgsTexts.json");
         public MainForm()
         {
             editNotepadLabel = new LinkButton();

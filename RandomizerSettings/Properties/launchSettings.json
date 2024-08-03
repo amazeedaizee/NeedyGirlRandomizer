@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "WPFLaunch": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Angel\\Desktop\\hmm\\bepin\\Randomizer\\RandomizerSettings\\bin\\Wpf\\Debug\\net6.0-windows\\Settings.exe",
+      "workingDirectory": "C:\\Users\\Angel\\Desktop\\hmm\\bepin\\Randomizer\\RandomizerSettings\\bin\\Wpf\\Debug\\net6.0-windows",
+      "nativeDebugging": true
+    }
+  }
+}

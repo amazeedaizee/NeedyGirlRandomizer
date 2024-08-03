@@ -109,6 +109,7 @@ namespace RandomSettings
 
         void AddNewTextItem(object? sender, EventArgs e)
         {
+
             var text = selectedText.Text;
             if (pastSelectedIndex != -1)
             {

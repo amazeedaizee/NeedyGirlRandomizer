@@ -7,26 +7,30 @@
   -->
 
   <PropertyGroup>
-
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ApplicationIcon>cursor.ico</ApplicationIcon>
-    <StartupObject>RandomSettings.Program</StartupObject>
-    <UseWPF>False</UseWPF>
-
+	  <StartupObject>RandomSettings.Program</StartupObject>
 	  <OutputType>WinExe</OutputType>
+	  <UseWPF>False</UseWPF>
 	  <UseWindowsForms>False</UseWindowsForms>
 	  <Configurations>Debug;Release;Wpf</Configurations>
 	  <NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
   </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-		<BuildPlatform>Mac64</BuildPlatform>
-		<TargetFramework>net6.0</TargetFramework>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+	  <BuildPlatform>Wpf</BuildPlatform>
+	  <TargetFramework>net6.0-windows</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+	  <BuildPlatform>Mac64</BuildPlatform>
+	  <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Wpf'">
 		<BuildPlatform>Wpf</BuildPlatform>
 		<TargetFramework>net6.0-windows</TargetFramework>
+		<Optimize>true</Optimize>
 	</PropertyGroup>
 	
 	<PropertyGroup Condition="'$(BuildVersion)' == 'Mac64'">

@@ -119,6 +119,8 @@ namespace RandomSettings
             }
             listOfTexts.Items.Add("...");
             currentTextList.textList.Add("...");
+            listOfTexts.SelectedIndex = -1;
+            selectedText.Text = "";
             SaveTexts();
         }
 

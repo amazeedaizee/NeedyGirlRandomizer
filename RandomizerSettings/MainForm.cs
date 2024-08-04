@@ -131,8 +131,19 @@ namespace RandomSettings
 
             Closed += (object? sender, EventArgs e) =>
             {
+                if (endMsgsWindow != null)
+                {
+                    endMsgsWindow.Close();
+                    endMsgsWindow = null;
+                }
+                if (notepadWindow != null)
+                {
+                    notepadWindow.Close();
+                    notepadWindow = null;
+                }
                 SettingsEditor.SetNewSettings();
                 SettingsEditor.SaveSettings();
+                Program.app.Quit();
             };
 
             SettingsEditor.SetMainForm(this);

@@ -38,6 +38,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
+    <None Remove="MacIcon.icns" />
     <None Remove="Resources\10_normie.png" />
     <None Remove="Resources\11_nympho.png" />
     <None Remove="Resources\12_cucked.png" />
@@ -64,6 +65,10 @@
     <None Remove="Resources\8_pain.png" />
     <None Remove="Resources\9_f_angel.png" />
     <None Remove="Resources\megaten.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BundleResource Include="MacIcon.icns" />
   </ItemGroup>
 
   <ItemGroup>

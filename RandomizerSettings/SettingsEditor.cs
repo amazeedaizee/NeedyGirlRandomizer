@@ -83,7 +83,7 @@ namespace RandomSettings
                 currentPath = Path.Combine(Path.GetDirectoryName(Directory.GetParent(Directory.GetParent(Directory.GetParent(AppContext.BaseDirectory).FullName).FullName).FullName));
                 return;
             }
-            currentPath = Path.GetDirectoryName(Directory.GetCurrentDirectory());
+            currentPath = Directory.GetCurrentDirectory();
 
         }
     }

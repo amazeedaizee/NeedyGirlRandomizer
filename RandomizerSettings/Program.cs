@@ -5,6 +5,7 @@ namespace RandomSettings
 {
     internal class Program
     {
+        internal static Application? app = null;
         [STAThread]
         static void Main(string[] args)
         {
@@ -12,7 +13,8 @@ namespace RandomSettings
             // System.Diagnostics.Debug.WriteLine("I am debugged!");
             SettingsEditor.SetAppDirectory();
             SettingsEditor.LoadSettings();
-            new Application(Eto.Platform.Detect).Run(new MainForm());
+            app = new Application(Eto.Platform.Detect);
+            app.Run(new MainForm());
         }
 
 

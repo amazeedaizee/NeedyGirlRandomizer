@@ -22,7 +22,7 @@ namespace Randomizer
 
         public const string pluginGuid = "needy.girl.random";
         public const string pluginName = "Randomizer";
-        public const string pluginVersion = "2.0.0.1";
+        public const string pluginVersion = "2.0.0.2";
 
         public static ManualLogSource logger;
 

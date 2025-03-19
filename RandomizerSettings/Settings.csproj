@@ -15,21 +15,22 @@
 	  <UseWindowsForms>False</UseWindowsForms>
 	  <Configurations>Debug;Release;Wpf</Configurations>
 	  <NoWarn>$(NoWarn);NU1504;NU1505;NU1701</NoWarn>
+	  <TargetFramework>net8.0-windows</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
 	  <BuildPlatform>Wpf</BuildPlatform>
-	  <TargetFramework>net6.0-windows</TargetFramework>
+	  <TargetFramework>net8.0-windows</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
 	  <BuildPlatform>Mac64</BuildPlatform>
-	  <TargetFramework>net6.0</TargetFramework>
+	  <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)' == 'Wpf'">
 		<BuildPlatform>Wpf</BuildPlatform>
-		<TargetFramework>net6.0-windows</TargetFramework>
+		<TargetFramework>net8.0-windows</TargetFramework>
 		<Optimize>true</Optimize>
 	</PropertyGroup>
 	

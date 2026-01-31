@@ -1,3 +1,4 @@
+### [A small update on my mods](https://gist.github.com/amazeedaizee/b065103e312e6339ddce15854445dc27)
 # Randomizer For Needy Streamer Overload
 
 ![2024-02-18 11-51-39 mp4_snapshot_00 09 682](https://github.com/amazeedaizee/NeedyGirlRandomizer/assets/131136866/cc02e525-9ee7-4eaf-bdeb-c35d33d73431)
@@ -109,6 +110,13 @@ Randomize animations that play in the Webcam.
 
 Includes the chance of playing either Ame or KAngel animations when playing through the Webcam if 'Randomize Animations' is on.
 If this option is off, the two types are played depending on the current event (Ame: off-stream, KAngel: on-stream).
+
+## Disclosure
+
+This mod was unfortunately created using Visual Studio 2022 with Intellicode (Ai-powered autocomplete)
+
+[More info](https://gist.github.com/amazeedaizee/b065103e312e6339ddce15854445dc27)
+
 
 ## Other
 
